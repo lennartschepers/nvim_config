@@ -16,7 +16,23 @@ return {
     },
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require("lspconfig").lua_ls.setup { capabilities = capabilities }
+      local lspconfig = require("lspconfig")
+      -- require("lspconfig").lua_ls.setup { capabilities = capabilities }
+      -- Lua
+      lspconfig.lua_ls.setup {
+        capabilities = capabilities,
+      }
+
+      -- Python
+      lspconfig.pyright.setup {
+        capabilities = capabilities,
+        filetypes = { "python" },
+      }
+      -- Go
+      lspconfig.gopls.setup {
+        capabilities = capabilities,
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      }
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -36,5 +52,6 @@ return {
         end,
       })
     end,
+    ft = { "lua", "python", "go" }, -- Only load lsp plugin for these filetypes
   }
 }

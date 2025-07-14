@@ -1,11 +1,24 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
 require("config.lazy")
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
+
+vim.o.termguicolors = true
+
+vim.o.scrolloff = 8
 
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":.lua<CR>")
+
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 local opt = vim.opt
 
