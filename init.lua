@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
+vim.opt.winborder = "rounded"
 require("config.lazy")
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
@@ -17,8 +18,13 @@ vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":.lua<CR>")
 
+vim.keymap.set("n", "<space>t", ":e ~/todo<CR>")
+
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action" })
 
 local opt = vim.opt
 

@@ -28,6 +28,11 @@ return {
         capabilities = capabilities,
         filetypes = { "python" },
       }
+      -- JS
+      lspconfig.ts_ls.setup {
+        capabilities = capabilities,
+        filetypes = { "javascript", "typescript", "html" },
+      }
       -- Go
       lspconfig.gopls.setup {
         capabilities = capabilities,
@@ -52,6 +57,6 @@ return {
         end,
       })
     end,
-    ft = { "lua", "python", "go" }, -- Only load lsp plugin for these filetypes
+    ft = { "lua", "python", "go", "javascript", "typescript", "html" }, -- Only load lsp plugin for these filetypes
   }
 }

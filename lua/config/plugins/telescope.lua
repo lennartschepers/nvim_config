@@ -8,16 +8,28 @@ return {
     },
     config = function()
       require('telescope').setup {
+        defaults = {
+          borderchars = {
+            "─", -- top
+            "│", -- right
+            "─", -- bottom
+            "│", -- left
+            "┌", -- top-left
+            "┐", -- top-right
+            "┘", -- bottom-right
+            "└", -- bottom-left
+          },
+        },
         extensions = {
           fzf = {}
-        }
+        },
       }
 
       require('telescope').load_extension('fzf')
 
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
       vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
-      vim.keymap.set("n", "<space>fb", require('telescope.builtin').buffers)
+      vim.keymap.set("n", "<space>fe", require('telescope.builtin').buffers)
       vim.keymap.set("n", "<space>en", function()
         require('telescope.builtin').find_files {
           cwd = vim.fn.stdpath("config")
